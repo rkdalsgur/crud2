@@ -38,7 +38,7 @@ export default function EditTopicForm({ id, title, description }) {
           onChange={(e) => setNewTitle(e.target.value)}
           type="text"
           placeholder="Topic title"
-          className="border border-slate-500 p-2"
+          className="border border-slate-500 p-3"
         />
         <textarea
           value={newDescription}
@@ -49,7 +49,7 @@ export default function EditTopicForm({ id, title, description }) {
         />
         <button
           type="submit"
-          className="bg-green-800 text-white font-bold w-fit fit py-3 px-6 rounded-md"
+          className="bg-green-800 text-white font-bold w-fit px-6 py-3 rounded-md"
         >
           Update Topic
         </button>

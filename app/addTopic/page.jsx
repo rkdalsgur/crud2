@@ -1,17 +1,18 @@
-'use client' //usestate를 쓰기위한 사전 동작
+'use client'
 
-import React, { useState } from 'react' //usestate import
-import { useRouter } from 'next/navigation' //라우터 import
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 
 export default function AddTopicPage() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const router = useRouter() //초기화면으로 돌아가기(작동오류)
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
-    e.preventDefault() //페이지 새로고침 안되게 막기
+    e.preventDefault()
+
     if (!title || !description) {
-      alert('내용을 입력하세요') //경고 메시지 출력
+      alert('Title and description are required.')
     }
 
     try {
@@ -23,23 +24,24 @@ export default function AddTopicPage() {
         body: JSON.stringify({ title, description }),
       })
       if (res.ok) {
-        router.push('/') //초기화면으로 보내고
-        router.refresh() //페이지를 새로고침함
+        router.push('/')
+        router.refresh()
       } else {
-        throw new Error('토픽을 만드는 데 실패하였습니다.')
+        throw new Error('Failed to create a topic')
       }
     } catch (error) {
       console.log(error)
     }
   }
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         type="text"
-        placeholder="Topic description"
-        className="border border-slate-500 p-2"
+        placeholder="Topic title"
+        className="border border-slate-500 p-3"
       />
       <textarea
         value={description}
@@ -48,7 +50,10 @@ export default function AddTopicPage() {
         placeholder="Topic description"
         className="border border-slate-500 p-3 h-32"
       />
-      <button className="bg-green-800 text-white font-bold w-fit fit py-3 px-6 rounded-md">
+      <button
+        type="submit"
+        className="bg-green-800 text-white font-bold w-fit px-6 py-3 rounded-md"
+      >
         Add Topic
       </button>
     </form>

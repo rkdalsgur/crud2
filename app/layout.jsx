@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'MongoDB CRUD',
-  description: 'MongoDB,Tailwind CSS,Next-Auth',
+  description: 'MongoDB, Tailwind CSS, Next-Auth',
 }
 
 export default function RootLayout({ children }) {
