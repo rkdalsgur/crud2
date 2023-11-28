@@ -6,7 +6,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold">Topics</h1>
       <p>MongoDB CRUD example</p>
       <p>Next-auth 인증</p>
-      {/* <TopicList /> */}
+      <TopicList />
     </div>
   )
 }

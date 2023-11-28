@@ -5,12 +5,12 @@ import { HiPencilAlt } from 'react-icons/hi'
 
 const getTopics = async () => {
   const apiUrl = process.env.API_URL
+
   try {
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: 'no-store',
     }) //캐시를 저장하지 않음 + topics 12번쨰줄이 응답
     if (!res.ok) {
-      //res에서 정상처리되지 않으면
       throw new Error('Failed to fetch topics') //오류 발생 메시지
     }
     return res.json()
